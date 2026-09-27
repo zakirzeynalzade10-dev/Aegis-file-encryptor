@@ -64,13 +64,6 @@ scripting, `--chunk-size`, etc.).
   are never accepted as a bare CLI argument, which would otherwise leak into
   shell history and process listings.
 
-This is a solid, defensible design for real-world file protection. It has
-**not** been through third-party security audit or formal certification —
-if you're shipping this commercially, get an independent cryptography
-review before making strong security claims to customers, especially in
-regulated markets (finance, healthcare, government).
-
-## Turning this into a sellable product
 
 A few concrete next steps once you're happy with functionality:
 
@@ -79,7 +72,7 @@ A few concrete next steps once you're happy with functionality:
    ```bash
    pip install pyinstaller
    pyinstaller --onefile --windowed --name "AegisCrypt" --icon=your_icon.ico aegis.py
-   ```
+   ```  if it doesn't work out    python -m PyInstaller --onefile --windowed --name "AegisCrypt" --icon=aegis_icon.ico aegis.py                   or        python -m PyInstaller --onefile --windowed --name "AegisCrypt" --icon=aegis_icon.ico aegis.py  
    `--windowed` suppresses the console for the GUI; drop it if you want a
    console build for CLI-only distribution instead, or ship both.
 2. **Code-sign the executable** (Windows: Authenticode certificate; macOS:
@@ -99,5 +92,5 @@ A few concrete next steps once you're happy with functionality:
 ## Running the tests
 
 ```bash
-python test_core.py
+python aegis.py
 ```
